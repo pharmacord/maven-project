@@ -5,7 +5,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mulesoft.training</groupId>
-	<artifactId>maven-project</artifactId>
+	<artifactId>maven-project-aaron</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule</packaging>
 	<name>Mule maven-project Application</name>
@@ -17,10 +17,35 @@
 		<mule.tools.version>1.2</mule.tools.version>
 		<derby.version>10.13.1.1</derby.version>
 		<activemq.version>5.15.1</activemq.version>
+		<uid>ahigdon</uid>
+		<pwd>Pharmacord01</pwd>
 	</properties>
 
 	<build>
 		<plugins>
+<plugin>
+    <groupId>org.mule.tools.maven</groupId>
+    <artifactId>mule-maven-plugin</artifactId>
+    <version>2.2.1</version>
+    <configuration>
+        <deploymentType>cloudhub</deploymentType>
+        <muleVersion>3.8.5</muleVersion>
+        <username>${uid}</username>
+        <password>${pwd}</password>
+        <workerType>Micro</workerType>
+        <redeploy>true</redeploy>
+        <environment>Sandbox</environment>
+    </configuration>
+    <executions>
+        <execution>
+            <id>deploy</id>
+            <phase>deploy</phase>
+            <goals>
+                <goal>deploy</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>		
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
